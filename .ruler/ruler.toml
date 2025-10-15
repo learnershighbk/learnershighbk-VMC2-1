@@ -30,11 +30,16 @@ default_agents = ["cursor", "codex"]
 # 1. A stdio server (local executable)
 # 2. A remote server (HTTP-based)
 
-# [mcp_servers.example_stdio]
-# command = "node"
-# args = ["scripts/your-mcp-server.js"]
-# env = { API_KEY = "replace_me" }
+# --- Playwright MCP (브라우저 자동화) ---
+[mcp_servers.playwright]
+command = "npx"
+args = ["@playwright/mcp@latest"]
 
-# [mcp_servers.example_remote]
-# url = "https://api.example.com/mcp"
-# headers = { Authorization = "Bearer REPLACE_ME" }
+# --- Supabase MCP (데이터 연동) ---
+[mcp_servers.supabase]
+command = "npx"
+args = ["@supabase/mcp@latest"]
+env = {
+  SUPABASE_URL =https://bhsqvsbozrwhgdtrxntq.supabase.co
+  SUPABASE_ANON_KEY =eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImJoc3F2c2JvenJ3aGdkdHJ4bnRxIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NjA1MTEzMjUsImV4cCI6MjA3NjA4NzMyNX0.4zrjMjsBQc5nCcUp3EgKhLdyGR-Kv4XHBHAZrLGxlSE
+}
