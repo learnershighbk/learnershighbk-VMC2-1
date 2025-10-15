@@ -13,6 +13,11 @@ export const getAppConfig = (): AppConfig => {
     return cachedConfig;
   }
 
+  if (!process.env.SUPABASE_URL) {
+    console.error('❌ SUPABASE_URL is not set');
+    console.error('Available SUPABASE env vars:', Object.keys(process.env).filter(k => k.includes('SUPABASE')));
+  }
+
   const parsed = envSchema.safeParse({
     SUPABASE_URL: process.env.SUPABASE_URL,
     SUPABASE_SERVICE_ROLE_KEY: process.env.SUPABASE_SERVICE_ROLE_KEY,

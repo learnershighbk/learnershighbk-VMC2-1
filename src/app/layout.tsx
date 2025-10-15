@@ -3,6 +3,7 @@ import "./globals.css";
 import Providers from "./providers";
 import { loadCurrentUser } from "@/features/auth/server/load-current-user";
 import { CurrentUserProvider } from "@/features/auth/context/current-user-context";
+import { Footer } from "@/components/common/Footer";
 
 export const metadata: Metadata = {
   title: "Create Next App",
@@ -18,10 +19,13 @@ export default async function RootLayout({
 
   return (
     <html lang="ko" suppressHydrationWarning>
-      <body className="antialiased font-sans">
+      <body className="antialiased font-sans flex flex-col min-h-screen">
         <Providers>
           <CurrentUserProvider initialState={currentUser}>
-            {children}
+            <div className="flex-1">
+              {children}
+            </div>
+            <Footer />
           </CurrentUserProvider>
         </Providers>
       </body>
